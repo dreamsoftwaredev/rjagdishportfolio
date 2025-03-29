@@ -24,3 +24,16 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+#nprogress .bar {
+  background: #3b82f6;
+  height: 4px;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #3b82f6, 0 0 5px #3b82f6;
+}
+
+#nprogress .spinner {
+  display: none;
+}
