@@ -37,7 +37,7 @@ export default function Hero() {
                         Contact Me
                     </Link>
                     <Link
-                        href="/CV/P_Jagdish_Rao_CV.pdf"
+                        href="/CV/pjagdishraocv.pdf"
                         download="P_Jagdish_Rao_CV.pdf"
                         className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition"
                     >
@@ -56,7 +56,7 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 0.3 }}
             >
                 <Image
-                    src="/images/Jagdish_Rao.jpg"
+                    src="/images/jagdishrao.jpg"
                     alt="Profile Picture"
                     width={350}
                     height={350}
