@@ -37,7 +37,7 @@ export default function Hero() {
                         Contact Me
                     </Link>
                     <Link
-                        href="/CV/pjagdishraocv.pdf"
+                        href="/cv/pjagdishraocv.pdf"
                         download="P_Jagdish_Rao_CV.pdf"
                         className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition"
                     >
