@@ -15,6 +15,7 @@ const Header = () => {
                     <div className='flex space-x-4'>
                         <Link href="/" > Home </Link>
                         <Link href='/projects'> Projects </Link>
+                        <Link href='/skills'>Skills</Link>
                         <Link href='/contact'> Contact </Link>
                     </div>
                 </nav>

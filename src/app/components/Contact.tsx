@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import SocialIcons from "./SocialIcon";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../utils/firebase.config";
 
 const Contact = () => {
@@ -25,7 +25,7 @@ const Contact = () => {
         setLoading(true);
 
         try {
-            await addDoc(collection(db, "contacts"), {
+            await (collection(db, "contacts"), {
                 ...formData,
                 timestamp: serverTimestamp(),
             });
