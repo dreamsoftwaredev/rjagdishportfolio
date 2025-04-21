@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaNodeJs, FaReact } from 'react-icons/fa'
-import { SiAxios, SiFirebase, SiJavascript, SiNextdotjs, SiNpm, SiTailwindcss, SiTypescript, SiYarn } from 'react-icons/si'
+import { SiAxios, SiFirebase, SiJavascript, SiNextdotjs, SiNpm, SiRedux, SiTailwindcss, SiTypescript, SiYarn } from 'react-icons/si'
 
 const skillsData = [
     { name: "React", icon: <FaReact className="text-blue-500 text-4xl" /> },
@@ -12,7 +12,8 @@ const skillsData = [
     { name: "Firebase", icon: <SiFirebase className="text-yellow-500 text-4xl" /> },
     { name: "Node.js", icon: <FaNodeJs className="text-green-600 text-4xl" /> },
     { name: "NPM", icon: <SiNpm className="text-red-500 text-4xl" /> },
-    { name: "Yarn", icon: <SiYarn className="text-sky-500 text-4xl" /> }
+    { name: "Yarn", icon: <SiYarn className="text-sky-500 text-4xl" /> },
+    { name: "Redux", icon: <SiRedux className="text-red-500 text-4xl" /> },
 ];
 
 const Skills = () => {
