@@ -19,10 +19,11 @@ export default function Hero() {
                     Hi, I&apos;m <span className="text-yellow-400">P Jagdish Rao</span> 👋
                 </h1>
                 <p className="text-lg max-w-lg">
-                    I&apos;m a passionate<span className="font-semibold text-green-500 p-1">Frontend Developer</span>
-                    skilled in building interactive web experiences using HTML, CSS, Tailwind CSS, JavaScript, TypeScript, and
-                    React.js with the Next.js framework. I also have experience with Node.js for
-                    backend development and efficiently manage data flow through APIs using Axios and Redux.
+                    I&apos;m a passionate
+                    <span className="font-semibold text-green-500 p-1">Full-Stack MERN Developer</span>
+                    skilled in building end-to-end modern web applications using MongoDB, Express.js, React.js, and Node.js.
+                    I craft responsive UI using HTML, CSS, Tailwind CSS, JavaScript, TypeScript, and React.js with the Next.js framework.
+                    On the backend, I build scalable APIs with Node.js & Express.js, integrate databases using MongoDB, and handle authentication, state management, and API communication with Redux and Axios.
                 </p>
                 <div className="flex gap-4">
                     <Link
@@ -37,7 +38,7 @@ export default function Hero() {
                         Contact Me
                     </Link>
                     <Link
-                        href="/attachment/pjagdishraocv.pdf"
+                        href="/attachment/P_Jagdish_Rao_CV_2026.pdf"
                         download="P_Jagdish_Rao_CV.pdf"
                         className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition"
                     >
