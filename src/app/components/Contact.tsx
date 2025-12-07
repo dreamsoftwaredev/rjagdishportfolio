@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import SocialIcons from "./SocialIcon";
-import { collection, serverTimestamp } from "firebase/firestore";
-import { db } from "../utils/firebase.config";
+import { collection } from "firebase/firestore";
+import { db, addDoc, serverTimestamp } from "../utils/firebase.config";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -25,14 +25,15 @@ const Contact = () => {
         setLoading(true);
 
         try {
-            await (collection(db, "contacts"), {
+            await addDoc(collection(db, "contacts"), {
                 ...formData,
                 timestamp: serverTimestamp(),
             });
 
             setSuccess("Message sent successfully");
             setFormData({ name: "", email: "", message: "" });
-        } catch {
+        } catch (error) {
+            console.error("Failed to send message:", error);
             setSuccess("Message not sent");
         } finally {
             setLoading(false);
