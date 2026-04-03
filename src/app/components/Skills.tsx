@@ -1,52 +1,40 @@
-import React from 'react';
-import { FaReact, FaNodeJs } from 'react-icons/fa';
-import {
-    SiNextdotjs,
-    SiTypescript,
-    SiTailwindcss,
-    SiFirebase,
-    SiJavascript,
-    SiNpm,
-    SiYarn,
-    SiRedux,
-    SiMongodb,
-    SiAxios,
-    SiExpress
-} from 'react-icons/si';
+import { skillGroups } from "../data/portfolio";
 
-const skillsData = [
-    { name: "React", icon: <FaReact className="text-blue-500 text-4xl" /> },
-    { name: "Next.js", icon: <SiNextdotjs className="text-black text-4xl" /> },
-    { name: "TypeScript", icon: <SiTypescript className="text-blue-700 text-4xl" /> },
-    { name: "JavaScript", icon: <SiJavascript className="text-yellow-500 text-4xl" /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400 text-4xl" /> },
-    { name: "Redux", icon: <SiRedux className="text-red-500 text-4xl" /> },
-    { name: "Node.js", icon: <FaNodeJs className="text-green-600 text-4xl" /> },
-    { name: "Express.js", icon: <SiExpress className="text-gray-300 text-4xl" /> },
-    { name: "MongoDB", icon: <SiMongodb className="text-green-500 text-4xl" /> },
-    { name: "Firebase", icon: <SiFirebase className="text-yellow-500 text-4xl" /> },
-    { name: "Axios / REST API", icon: <SiAxios className="text-purple-600 text-4xl" /> },
-    { name: "NPM", icon: <SiNpm className="text-red-500 text-4xl" /> },
-    { name: "Yarn", icon: <SiYarn className="text-sky-500 text-4xl" /> },
-];
+type SkillsProps = {
+  compact?: boolean;
+};
 
-const Skills = () => {
-    return (
-        <section className='min-h-screen bg-black p-10'>
-            <h1 className='text-4xl text-center text-white font-bold mb-10'>Full-Stack MERN Skills</h1>
-            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center'>
-                {skillsData.map((skill, index) => (
-                    <div
-                        key={index}
-                        className="flex flex-col items-center bg-gray-800 p-6 rounded-xl shadow-lg w-44 transform hover:scale-110 transition-transform duration-300"
-                    >
-                        {skill.icon}
-                        <p className='text-white mt-2 font-medium text-center'>{skill.name}</p>
-                    </div>
-                ))}
+export default function Skills({ compact = false }: SkillsProps) {
+  const groups = compact ? skillGroups.slice(0, 3) : skillGroups;
+
+  return (
+    <section className="mx-auto w-full max-w-7xl px-6 py-16 md:px-10">
+      <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="text-sm uppercase tracking-[0.28em] text-sky-300">Technical Skills</p>
+          <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
+            A practical stack for shipping modern web products
+          </h2>
+        </div>
+        <p className="max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
+          The portfolio is centered around the same technologies used in current production work, from responsive interface development to API integration and database-backed authentication flows.
+        </p>
+      </div>
+
+      <div className="grid gap-6 lg:grid-cols-2">
+        {groups.map((group) => (
+          <article key={group.title} className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6">
+            <h3 className="text-xl font-semibold text-white">{group.title}</h3>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {group.items.map((item) => (
+                <span key={item} className="rounded-full border border-white/10 bg-slate-950/55 px-4 py-2 text-sm text-slate-200">
+                  {item}
+                </span>
+              ))}
             </div>
-        </section>
-    )
+          </article>
+        ))}
+      </div>
+    </section>
+  );
 }
-
-export default Skills;

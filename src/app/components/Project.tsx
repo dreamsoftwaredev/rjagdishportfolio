@@ -1,101 +1,73 @@
 "use client";
-import React from "react";
+
 import { motion } from "framer-motion";
-import { FaReact, FaNodeJs } from "react-icons/fa";
-import {
-    SiNextdotjs,
-    SiTypescript,
-    SiTailwindcss,
-    SiFirebase,
-    SiAxios,
-    SiJavascript,
-    SiNpm,
-    SiYarn,
-    SiRedux,
-    SiMongodb,
-} from "react-icons/si";
 import Link from "next/link";
-import ProjectDescription from "./ProjectDescription";
+import { projects, projectTechnologies } from "../data/portfolio";
 
-// Common technologies
-const commonTechnologies = [
-    { name: "React", icon: <FaReact className="text-blue-500" /> },
-    { name: "Next.js", icon: <SiNextdotjs className="text-black" /> },
-    { name: "TypeScript", icon: <SiTypescript className="text-blue-700" /> },
-    { name: "JavaScript", icon: <SiJavascript className="text-yellow-500" /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400" /> },
-    { name: "Axios", icon: <SiAxios className="text-purple-600" /> },
-    { name: "Node.js", icon: <FaNodeJs className="text-green-600" /> },
-    { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
-    { name: "Firebase", icon: <SiFirebase className="text-yellow-500" /> },
-    { name: "NPM", icon: <SiNpm className="text-red-500" /> },
-    { name: "Yarn", icon: <SiYarn className="text-sky-500" /> },
-    { name: "Redux", icon: <SiRedux className="text-red-500" /> },
-];
-
-// Projects data
-const projects = [
-    { name: "Pieduet", technologies: commonTechnologies, link: "https://pieduet.com" },
-    { name: "PievCore", technologies: commonTechnologies, link: "https://pievcore.com" },
-    // Add more projects here if needed
-];
-
-const Projects = () => {
-    return (
-        <section className="w-full min-h-screen bg-black p-10">
-            <motion.h1
-                className="text-4xl font-bold text-center text-white mb-16"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-            >
-                My Projects
-            </motion.h1>
-
-            {projects.map((project, index) => (
-                <motion.div
-                    key={index}
-                    className={`grid md:grid-cols-2 gap-10 items-center mb-16 rounded-2xl p-8 ${index % 2 === 0
-                            ? "bg-zinc-900 border-l-4 border-blue-500"
-                            : "bg-zinc-800 border-r-4 border-green-500 md:flex-row-reverse"
-                        }`}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.2, duration: 0.6 }}
-                >
-                    {/* Project Description */}
-                    <div className="flex flex-col justify-center">
-                        <h2 className="text-3xl font-bold text-yellow-400 mb-4">{project.name}</h2>
-                        <div className="text-white text-base leading-relaxed mb-6">
-                            <ProjectDescription projectName={project.name} />
-                        </div>
-                        <Link
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition"
-                        >
-                            Visit Website
-                        </Link>
-                    </div>
-
-                    {/* Technologies */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                        {project.technologies.map((tech, idx) => (
-                            <motion.div
-                                key={idx}
-                                className="flex items-center gap-2 bg-white text-black px-3 py-2 rounded-lg shadow-sm hover:scale-105 transition-transform"
-                                whileHover={{ scale: 1.05 }}
-                            >
-                                <span className="text-xl">{tech.icon}</span>
-                                <span className="text-sm font-medium">{tech.name}</span>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-            ))}
-        </section>
-    );
+type ProjectsProps = {
+  compact?: boolean;
 };
 
-export default Projects;
+export default function Project({ compact = false }: ProjectsProps) {
+  const visibleProjects = compact ? projects.slice(0, 2) : projects;
+
+  return (
+    <section className="mx-auto w-full max-w-7xl px-6 py-16 md:px-10">
+      <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="text-sm uppercase tracking-[0.28em] text-sky-300">Selected Work</p>
+          <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
+            Projects shaped by real product and API work
+          </h2>
+        </div>
+        <p className="max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
+          These projects reflect the same stack and delivery pattern highlighted in the resume: responsive frontend architecture, secure authentication, modular backend services, and scalable database design.
+        </p>
+      </div>
+
+      <div className="space-y-8">
+        {visibleProjects.map((project, index) => (
+          <motion.article
+            key={project.name}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, delay: index * 0.08 }}
+            className="grid gap-8 rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-xl shadow-slate-950/20 lg:grid-cols-[1fr_0.9fr] lg:p-8"
+          >
+            <div className="space-y-5">
+              <div className="space-y-2">
+                <p className="text-sm uppercase tracking-[0.28em] text-amber-300">{project.subtitle}</p>
+                <h3 className="text-2xl font-semibold text-white sm:text-3xl">{project.name}</h3>
+                <p className="max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">{project.overview}</p>
+              </div>
+
+              <div className="grid gap-3">
+                {project.bullets.map((bullet) => (
+                  <div key={bullet} className="rounded-2xl border border-white/8 bg-slate-950/45 px-4 py-4 text-sm leading-7 text-slate-300">
+                    {bullet}
+                  </div>
+                ))}
+              </div>
+
+              <Link href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-full bg-amber-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-amber-200">
+                Visit Website
+              </Link>
+            </div>
+
+            <div className="rounded-[1.75rem] border border-white/8 bg-slate-950/50 p-5">
+              <p className="text-sm uppercase tracking-[0.22em] text-slate-400">Project Stack</p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                {projectTechnologies.map((tech) => (
+                  <span key={tech} className="rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-sm text-sky-100">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+    </section>
+  );
+}

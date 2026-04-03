@@ -1,16 +1,15 @@
-import React from 'react'
-import Skills from '../components/Skills'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import Skills from "../components/Skills";
+import ResumePanel from "../components/ResumePanel";
 
-const skills = () => {
-    return (
-        <div>
-            <Header />
-            <Skills />
-            <Footer />
-        </div>
-    )
+export default function SkillsPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-white">
+      <Header />
+      <Skills />
+      <ResumePanel />
+      <Footer />
+    </div>
+  );
 }
-
-export default skills
