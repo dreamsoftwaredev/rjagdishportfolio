@@ -1,16 +1,13 @@
-import React from 'react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import Project from '../components/Project'
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import Project from "../components/Project";
 
-const contact = () => {
-    return (
-        <div>
-            <Header />
-            <Project />
-            <Footer />
-        </div>
-    )
+export default function ProjectsPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-white">
+      <Header />
+      <Project />
+      <Footer />
+    </div>
+  );
 }
-
-export default contact
